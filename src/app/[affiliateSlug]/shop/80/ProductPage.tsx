@@ -1,5 +1,6 @@
 "use client";
 import Button from "@/components/Button";
+import Image from "@/components/Image";
 import Input from "@/components/Input";
 import CallToAction from "@/components/PageElements/CallToAction";
 import OneFeature from "@/components/PageElements/OneFeature";
@@ -32,7 +33,7 @@ const Page = ({ product }: Props) => {
                 {product.images[imageHoverIndex ?? imageSelectedIndex]
                   ?.image_url ||
                   (product.image_url && (
-                    <img
+                    <Image
                       src={
                         product.images[imageHoverIndex ?? imageSelectedIndex]
                           ?.image_url || product.image_url
@@ -54,7 +55,7 @@ const Page = ({ product }: Props) => {
                       className="relative cursor-pointer flex w-full h-24 bg-gray-100 items-center"
                     >
                       <div className="margin-0 absolute">
-                        <img
+                        <Image
                           src={image.image_url}
                           alt={`image ${index}`}
                           height={96}

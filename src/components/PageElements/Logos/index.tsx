@@ -1,3 +1,5 @@
+import Image from "@/components/Image";
+
 const Logos = () => {
   return (
     <div className="text-center py-20 px-15">
@@ -6,37 +8,37 @@ const Logos = () => {
         credibility]
       </div>
       <div className="inline-flex justify-around w-full">
-        <img
+        <Image
           src="/images/logo.png"
           alt="impressive logo here"
           width={150}
           height={60}
         />
-        <img
+        <Image
           src="/images/logo.png"
           alt="impressive logo here"
           width={150}
           height={60}
         />
-        <img
+        <Image
           src="/images/logo.png"
           alt="impressive logo here"
           width={150}
           height={60}
         />
-        <img
+        <Image
           src="/images/logo.png"
           alt="impressive logo here"
           width={150}
           height={60}
         />
-        <img
+        <Image
           src="/images/logo.png"
           alt="impressive logo here"
           width={150}
           height={60}
         />
-        <img
+        <Image
           src="/images/logo.png"
           alt="impressive logo here"
           width={150}
