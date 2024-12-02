@@ -2,6 +2,7 @@
 import type { Product } from "@/types/product";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import Image from "../Image";
 
 const Product = ({ product }: { product: Product }) => {
   const { affiliateSlug } = useParams();
@@ -9,7 +10,7 @@ const Product = ({ product }: { product: Product }) => {
     <div className="snap-start">
       <div className="w-[364px]">
         <Link href={`/${affiliateSlug}/shop/${product.slug}`}>
-          <img
+          <Image
             src={
               product?.images[0]?.image_url ||
               product?.image_url ||

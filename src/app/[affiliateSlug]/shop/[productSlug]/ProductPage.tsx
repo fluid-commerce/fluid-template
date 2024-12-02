@@ -1,5 +1,6 @@
 "use client";
 import Button from "@/components/Button";
+import Image from "@/components/Image";
 import Input from "@/components/Input";
 import Star from "@/svgs/Star";
 import { Product } from "@/types/product";
@@ -29,7 +30,7 @@ const Page = ({ product }: Props) => {
               {(product.images[imageHoverIndex ?? imageSelectedIndex]
                 ?.image_url ||
                 product.image_url) && (
-                <img
+                <Image
                   src={
                     product.images[imageHoverIndex ?? imageSelectedIndex]
                       ?.image_url || product.image_url
@@ -56,7 +57,7 @@ const Page = ({ product }: Props) => {
                     )}
                   >
                     <div className="margin-0 absolute">
-                      <img
+                      <Image
                         src={image.image_url}
                         alt={`image ${index}`}
                         height={96}
