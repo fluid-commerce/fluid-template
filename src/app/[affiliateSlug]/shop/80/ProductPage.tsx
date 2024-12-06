@@ -5,7 +5,6 @@ import CallToAction from "@/components/PageElements/CallToAction";
 import OneFeature from "@/components/PageElements/OneFeature";
 import Star from "@/svgs/Star";
 import { Product } from "@/types/product";
-import Image from "next/image";
 import { useState } from "react";
 
 type Props = {
@@ -16,7 +15,7 @@ const Page = ({ product }: Props) => {
   const [imageHoverIndex, setImageHoverIndex] = useState<number>();
   const [imageSelectedIndex, setImageSelectedIndex] = useState(1);
   const [selectedVariant, setSelectedVariant] = useState<number>(
-    product.variants?.[0].id
+    product.variants?.[0]?.id ?? 0
   );
   const [quantity, setQuantity] = useState(1);
 
@@ -33,7 +32,7 @@ const Page = ({ product }: Props) => {
                 {product.images[imageHoverIndex ?? imageSelectedIndex]
                   ?.image_url ||
                   (product.image_url && (
-                    <Image
+                    <img
                       src={
                         product.images[imageHoverIndex ?? imageSelectedIndex]
                           ?.image_url || product.image_url
@@ -55,7 +54,7 @@ const Page = ({ product }: Props) => {
                       className="relative cursor-pointer flex w-full h-24 bg-gray-100 items-center"
                     >
                       <div className="margin-0 absolute">
-                        <Image
+                        <img
                           src={image.image_url}
                           alt={`image ${index}`}
                           height={96}
@@ -86,11 +85,13 @@ const Page = ({ product }: Props) => {
               </div>
               <div>(4.5 stars) • 10 reviews</div>
             </div>
-            <div dangerouslySetInnerHTML={{ __html: product.description }} />
+            <div
+              dangerouslySetInnerHTML={{ __html: product.description || "" }}
+            />
             <div className="flex flex-col gap-2">
               <div>Variant</div>
               <div>
-                {product.variants.map((variant) => (
+                {(product?.variants ?? []).map((variant) => (
                   <Button
                     onClick={() =>
                       variant.id !== selectedVariant &&

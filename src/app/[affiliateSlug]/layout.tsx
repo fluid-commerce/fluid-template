@@ -38,12 +38,15 @@ export default async function RootLayout({ children, params }: PageProps) {
       <head>
         <Script id="fluid-widget-boot" strategy="beforeInteractive">
           {`
-          window.fcs = {api_url_host: '${config.apiHost}', affiliate: '${affiliateSlug}'};
+          window.fcs = {api_url_host: '${config.apiHost}', affiliate: { credit: '${affiliateSlug}' }};
           (function(){ var f_ws = document.createElement('script'); f_ws.async = true; f_ws.src = '${config.widgetHost}'; x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(f_ws,x); })();
         `}
         </Script>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        ></meta>
         <link
           rel="icon"
           href={company.logo_url || "https://cdn.fluid.app/favicon-16x16.png"}
@@ -52,7 +55,7 @@ export default async function RootLayout({ children, params }: PageProps) {
       <body className={`${inter.className} h-screen`}>
         <Navbar params={params} company={company} />
         {children}
-        <Footer />
+        <Footer params={params} company={company} />
       </body>
     </html>
   );

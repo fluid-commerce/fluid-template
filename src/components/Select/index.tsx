@@ -27,7 +27,10 @@ const FluidSelect: FC<FluidSelectProps> = ({
         </Select.Icon>
       </Select.Trigger>
       <Select.Portal>
-        <Select.Content className="overflow-hidden bg-white shadow">
+        <Select.Content
+          position="popper"
+          className="overflow-y-auto overflow-x-hidden w-full max-h-64 bg-white shadow text-xs sm:text-base !z-100"
+        >
           <Select.Viewport className="flex flex-col">
             {options?.map((option) => (
               <SelectItem value={option.value} key={option.value}>

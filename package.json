@@ -8,11 +8,12 @@
   "scripts": {
     "dev": "next dev -p 8080",
     "build": "next build",
-    "start": "next start -p 8080",
+    "start": "next start -p ${PORT:-8080}",
     "lint": "next lint"
   },
   "dependencies": {
     "@awesome.me/kit-ac6c036e20": "^1.0.7",
+    "@fontsource/inter": "^5.1.0",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@radix-ui/react-popover": "^1.1.1",
@@ -23,6 +24,7 @@
     "lodash": "^4.17.21",
     "next": "14.2.5",
     "react": "^18",
+    "react-cookie": "^7.2.2",
     "react-dom": "^18",
     "tailwind-merge": "^2.4.0",
     "zod": "^3.23.8"

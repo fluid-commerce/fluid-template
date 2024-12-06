@@ -68,7 +68,6 @@ const companySchema = z.object({
   display_activities: z.boolean(),
   display_analytics: z.boolean(),
   display_leaderboard: z.boolean(),
-  display_simulators: z.boolean(),
   display_discounts: z.boolean(),
   display_share_stats: z.boolean(),
   display_get_started: z.boolean(),
@@ -97,7 +96,7 @@ const companySchema = z.object({
   appstore_url: z.string().nullable(),
   playstore_url: z.string().nullable(),
   token: z.string(),
-  display_billing_zip: z.string().nullable(),
+  display_billing_zip: z.boolean().nullable(),
 });
 
 export type Company = z.infer<typeof companySchema>;
