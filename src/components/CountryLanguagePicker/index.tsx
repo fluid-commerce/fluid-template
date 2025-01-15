@@ -1,10 +1,13 @@
 "use client";
-import Flag from "@/components/Flag";
-import Select from "@/components/Select";
-import { faChevronDown } from "@awesome.me/kit-ac6c036e20/icons/classic/regular";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import chevronDown from "@/svgs/chevron-down.svg";
 import * as Popover from "@radix-ui/react-popover";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import Flag from "../Flag";
+import Select from "../Select";
 
 type Props = {
   languageOptions: { label: string; value: string }[];
@@ -17,8 +20,21 @@ const CountryLanguagePicker = ({
   defaultCountry,
   countryOptions,
 }: Props) => {
-  const [country, setCountry] = useState(defaultCountry || "US");
-  const [lang, setLang] = useState("en");
+  const router = useRouter();
+  const [cookies, setCookie] = useCookies();
+  const [country, setCountry] = useState(
+    cookies["country"] || defaultCountry || "US"
+  );
+  const [lang, setLang] = useState(cookies["language"] || "en");
+
+  useEffect(() => {
+    router.refresh();
+    setCookie("country", country, { path: "/" });
+  }, [country, setCookie, router]);
+
+  useEffect(() => {
+    setCookie("language", lang, { path: "/" });
+  }, [lang, setCookie]);
 
   useEffect(() => {
     window.fcs = { ...(window.fcs || {}), language_iso: lang };
@@ -27,19 +43,19 @@ const CountryLanguagePicker = ({
   return (
     <Popover.Root>
       <Popover.Trigger asChild>
-        <button className="inline-flex gap-2 mr-4 max-h-24 overflow-hidden">
-          <Flag code={country} width={45.6} height={24} />
-          <div className="ml-2">
+        <button className="inline-flex items-center gap-2">
+          <Flag code={country} size={24} />
+          <span className="text-base">
             {country} | {lang.toUpperCase()}
-          </div>
-          <FontAwesomeIcon className="mt-0.5" icon={faChevronDown} />
+          </span>
+          <Image alt="chevron-down" height={10} width={10} src={chevronDown} />
         </button>
       </Popover.Trigger>
       <Popover.Portal>
-        <Popover.Content>
-          <div className="p-4 flex flex-col bg-white shadow mt-4 gap-y-6">
-            <div>
-              <div className="mb-1">Select Your Country</div>
+        <Popover.Content align="end">
+          <div className="p-4 flex flex-col bg-white shadow mt-4 w-64">
+            <div className="mb-6">
+              <div className="mb-1 text-base">Select Your Country</div>
               <Select
                 placeholder="Country"
                 value={country}
@@ -48,7 +64,7 @@ const CountryLanguagePicker = ({
               />
             </div>
             <div>
-              <div className="mb-1">Select Your Language</div>
+              <div className="mb-1 text-base">Select Your Language</div>
               <Select
                 placeholder="Language"
                 value={lang}

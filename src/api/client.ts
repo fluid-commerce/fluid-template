@@ -1,14 +1,24 @@
-const FluidApiClient = async (url: string, options?: RequestInit) => {
-  const response = await fetch(
-    `${process.env.FLUID_BASE_URL}/api/company/v1/${url}`,
-    {
-      ...options,
-      headers: {
-        ...options?.headers,
-        Authorization: `Bearer ${process.env.FLUID_API_TOKEN}`,
-      },
-    }
-  );
+const FluidApiClient = async (
+  url: string,
+  isCompanyAPI = true,
+  options?: RequestInit
+) => {
+  let fluidBaseUrl = process.env.FLUID_BASE_URL;
+  if (fluidBaseUrl?.endsWith("/")) {
+    fluidBaseUrl += "/";
+  }
+  const baseUrl = isCompanyAPI
+    ? `${process.env.FLUID_BASE_URL}api/company/v1/`
+    : `${process.env.FLUID_BASE_URL}api/v1/`;
+
+  const response = await fetch(`${baseUrl}${url}`, {
+    ...options,
+    headers: {
+      ...options?.headers,
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${process.env.FLUID_API_TOKEN}`,
+    },
+  });
 
   // instead of having to async get the body from every client call, we can just do it here
   return {

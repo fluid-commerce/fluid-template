@@ -1,14 +1,20 @@
-import { getProducts } from "@/api";
+import { getProducts, safeZodParse } from "@/api";
 import client from "@/api/client";
-import { collectionSchema } from "@/types/collection";
+import { Collection, collectionSchema } from "@/types/collection";
+import { cookies } from "next/headers";
 
-async function getCollection(collectionId: string) {
-  const products = await getProducts({ collectionId });
+async function getCollection(collectionId: string): Promise<Collection> {
+  const cookiesList = cookies();
+  const products = await getProducts({
+    collectionId,
+    language: cookiesList.get("language")?.value,
+    country: cookiesList.get("country")?.value,
+  });
 
   const { body } = await client(`collections/${collectionId}`);
 
   body.data.collection.products = products;
-  return collectionSchema.parse(body.data.collection);
+  return safeZodParse(body.data.collection, collectionSchema);
 }
 
 export default getCollection;
