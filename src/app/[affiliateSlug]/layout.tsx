@@ -73,17 +73,20 @@ export async function generateMetadata({
   const company = await getCompany();
   const headersList = await headers();
 
+  const name = company?.name || "company.name";
   return {
-    title: company.name,
+    title: name,
     openGraph: {
-      title: company.name,
+      title: name,
       url: `${headersList.get("x-url")}`,
       images: [
         {
-          url: company.logo_url,
+          url: company.logo_url
+            ? company.logo_url
+            : "https://placehold.co/800x600",
           width: 800,
           height: 600,
-          alt: `${company.name} logo`,
+          alt: `${name} logo`,
         },
       ],
       locale: "en_US",
@@ -92,10 +95,10 @@ export async function generateMetadata({
     twitter: {
       images: [
         {
-          url: company.logo_url,
+          url: "https://placehold.co/800x600",
           width: 800,
           height: 600,
-          alt: `${company.name} logo`,
+          alt: `${name} logo`,
         },
       ],
     },

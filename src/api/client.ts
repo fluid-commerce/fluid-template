@@ -1,22 +1,24 @@
+import { env } from "@/../env";
+
 const FluidApiClient = async (
   url: string,
   isCompanyAPI = true,
   options?: RequestInit,
 ) => {
-  let fluidBaseUrl = process.env.FLUID_BASE_URL;
+  let fluidBaseUrl = env.NEXT_PUBLIC_FLUID_BASE_URL;
   if (fluidBaseUrl?.endsWith("/")) {
     fluidBaseUrl += "/";
   }
   const baseUrl = isCompanyAPI
-    ? `${process.env.FLUID_BASE_URL}api/company/v1/`
-    : `${process.env.FLUID_BASE_URL}api/v1/`;
+    ? `${env.NEXT_PUBLIC_FLUID_BASE_URL}/api/company/v1/`
+    : `${env.NEXT_PUBLIC_FLUID_BASE_URL}/api/v1/`;
 
   const response = await fetch(`${baseUrl}${url}`, {
     ...options,
     headers: {
       ...options?.headers,
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.FLUID_API_TOKEN}`,
+      Authorization: `Bearer ${env.FLUID_API_TOKEN}`,
     },
   });
 

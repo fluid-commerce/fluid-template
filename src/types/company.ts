@@ -6,7 +6,7 @@ import { languageSchema } from "./language";
 const companySchema = z.object({
   id: z.number(),
   name: z.string(),
-  logo_url: z.string(),
+  logo_url: z.string().nullable(),
   active: z.boolean(),
   subdomain: z.string(),
   color: z.string(),
