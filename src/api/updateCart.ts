@@ -11,7 +11,7 @@ type TUpdateCartProps = {
 };
 
 async function updateCart(payload: TUpdateCartProps): Promise<CartItems> {
-  const cookiesList = cookies();
+  const cookiesList = await cookies();
   const cartToken = cookiesList.get("cartToken")?.value;
   const visitorToken = cookiesList.get("fluid_v")?.value;
 

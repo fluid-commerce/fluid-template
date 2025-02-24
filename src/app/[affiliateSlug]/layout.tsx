@@ -25,7 +25,13 @@ type PageProps = Readonly<{
   params: Record<string, string>;
 }>;
 
-export default async function RootLayout({ children, params }: PageProps) {
+export default async function RootLayout(props: PageProps) {
+  const params = await props.params;
+
+  const {
+    children
+  } = props;
+
   const { affiliateSlug } = params;
   const company = await getCompany();
 
@@ -61,7 +67,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const company = await getCompany();
-  const headersList = headers();
+  const headersList = await headers();
 
   return {
     title: company.name,

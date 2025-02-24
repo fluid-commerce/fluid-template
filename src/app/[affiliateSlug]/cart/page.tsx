@@ -5,7 +5,8 @@ type PageProps = {
   params: Record<string, any>;
 };
 
-const Page = async ({ params }: PageProps) => {
+const Page = async (props: PageProps) => {
+  const params = await props.params;
   const { affiliateSlug } = params;
   const cart = await getCart();
 

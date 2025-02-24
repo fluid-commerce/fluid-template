@@ -9,7 +9,8 @@ type PageProps = {
   params: Record<string, any>;
 };
 
-const Page = async ({ params }: PageProps) => {
+const Page = async (props: PageProps) => {
+  const params = await props.params;
   const collection = await getCollection(params.collectionSlug);
   return (
     <div className="px-20 w-full py-28">
@@ -64,11 +65,10 @@ const Page = async ({ params }: PageProps) => {
   );
 };
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const collection = await getCollection(params.collectionSlug);
-  const headersList = headers();
+  const headersList = await headers();
   return {
     title: collection.title,
     description: collection.description,

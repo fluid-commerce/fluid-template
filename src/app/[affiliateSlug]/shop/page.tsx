@@ -5,7 +5,7 @@ import chevronDown from "@/svgs/chevron-down.svg";
 import { cookies } from "next/headers";
 import Image from "next/image";
 const Shop = async () => {
-  const cookiesList = cookies();
+  const cookiesList = await cookies();
   const products =
     (await getProducts({
       language: cookiesList.get("language")?.value,

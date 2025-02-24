@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 
 async function getCart(): Promise<Carts | []> {
   try {
-    const cookiesList = cookies();
+    const cookiesList = await cookies();
     const cartToken = cookiesList.get("cartToken")?.value;
     const visitorToken = cookiesList.get("fluid_v")?.value;
 

@@ -11,7 +11,7 @@ const Page = async () => {
 
 export async function generateMetadata(): Promise<Metadata> {
   const product = await getProduct("80");
-  const headersList = headers();
+  const headersList = await headers();
 
   return {
     title: product.title,

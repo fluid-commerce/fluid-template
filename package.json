@@ -2,11 +2,8 @@
   "name": "fluid-template",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": ">=20.15.1"
-  },
   "scripts": {
-    "dev": "next dev -p 8080",
+    "dev": "next dev --turbopack -p 8080",
     "build": "next build",
     "start": "next start -p ${PORT:-8080}",
     "lint": "next lint"
@@ -15,25 +12,35 @@
     "@fontsource/inter": "^5.1.0",
     "@radix-ui/react-popover": "^1.1.1",
     "@radix-ui/react-select": "^2.1.1",
-    "@tanstack/react-query": "^5.51.9",
+    "@tanstack/react-query": "^5.66.9",
     "@types/lodash": "^4.17.7",
     "classnames": "^2.5.1",
     "lodash": "^4.17.21",
-    "next": "14.2.5",
-    "react": "^18",
+    "next": "15.1.7",
+    "react": "19.0.0",
     "react-cookie": "^7.2.2",
-    "react-dom": "^18",
+    "react-dom": "19.0.0",
     "tailwind-merge": "^2.4.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4",
     "eslint": "^8",
-    "eslint-config-next": "14.2.5",
+    "eslint-config-next": "15.1.7",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "resolutions": {
+    "@types/react": "19.0.10",
+    "@types/react-dom": "19.0.4"
+  },
+  "engines": {
+    "node": ">=22.14.0",
+    "yarn": "use npm",
+    "pnpm": "use npm",
+    "bun": "use npm"
   }
 }
