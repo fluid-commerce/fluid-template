@@ -31,6 +31,8 @@ jobs:
         run: npm run format:check
 
       - name: Run static checks
+        env:
+          SKIP_ENV_VALIDATION: true
         # nextjs build does linting and type checking + checks imports and other nextjs specific things
         run: |
           npm run build
