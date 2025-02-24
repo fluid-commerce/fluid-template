@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import ProductPage from "./ProductPage";
 
 type PageProps = {
-  params: Record<string, string>;
+  params: Promise<Record<string, string>>;
 };
 
 const Page = async (props: PageProps) => {

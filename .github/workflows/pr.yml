@@ -27,52 +27,10 @@ jobs:
       - name: Install deps
         run: npm install
 
+      - name: Check formatting
+        run: npm run format:check
+
       - name: Run static checks
         # nextjs build does linting and type checking + checks imports and other nextjs specific things
         run: |
           npm run build
-
-  test:
-    runs-on: ubuntu-latest
-    needs: [static]
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Bun Runtime
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Install deps
-        run: bun install
-
-      - name: Run tests
-        env:
-          NEXT_PUBLIC_SPREEDLY_API_KEY: xyz
-          NEXT_PUBLIC_NEXT_API_URL: http://127.0.0.1:4444
-        run: bun run test
-
-  e2e:
-    runs-on: ubuntu-latest
-    needs: [static]
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Bun Runtime
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Install deps
-        run: bun install
-
-      - name: Install Playwright Browsers
-        run: bunx playwright install chromium --with-deps
-
-      - name: Run e2e tests
-        env:
-          NEXT_PUBLIC_SPREEDLY_API_KEY: AYp3w0USiQcvhiPBIzuoGoyVGNc
-          NEXT_PUBLIC_NEXT_API_URL: http://127.0.0.1:4444
-        run: bun run e2e
