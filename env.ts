@@ -12,4 +12,5 @@ export const env = createEnv({
   experimental__runtimeEnv: {
     NEXT_PUBLIC_FLUID_BASE_URL: process.env.NEXT_PUBLIC_FLUID_BASE_URL,
   },
+  skipValidation: process.env.SKIP_ENV_VALIDATION === "true",
 });
