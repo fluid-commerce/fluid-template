@@ -6,16 +6,17 @@ async function GET(req: NextRequest) {
   const collectionId = urlParams?.[urlParams.length - 1];
   try {
     const { body, status, statusText } = await client(
-      `collections/${collectionId}`
+      `collections/${collectionId}`,
     );
     if (status === 200) {
       return NextResponse.json(body, { status: 200 });
     }
     return NextResponse.json({ message: statusText }, { status });
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { message: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

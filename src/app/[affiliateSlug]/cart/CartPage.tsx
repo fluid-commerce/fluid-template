@@ -17,7 +17,7 @@ interface CartPageProps {
 export default function CartPage({ cartInfo, slug }: CartPageProps) {
   const [cart, setCart] = useState<CartItem[] | []>(cartInfo?.cart_items ?? []);
   const [subtotal, setSubtotal] = useState<string>(
-    cartInfo?.sub_total ?? "0.00"
+    cartInfo?.sub_total ?? "0.00",
   );
   const [cookie, setCookie] = useCookies();
 
@@ -73,20 +73,20 @@ export default function CartPage({ cartInfo, slug }: CartPageProps) {
                   quantity: newQuantity ?? item.quantity,
                   subscription: subscribed ?? item.subscription,
                 }
-              : item
-          )
+              : item,
+          ),
         );
         setSubtotal(updatedCart.sub_total);
       } catch (error) {
         console.error("Failed to update cart item:", error);
       }
     },
-    100
+    100,
   );
 
   const totalQuantity = (cart ?? [])?.reduce(
     (total, item) => total + (item.quantity ?? 0),
-    0
+    0,
   );
 
   useEffect(() => {
@@ -102,8 +102,8 @@ export default function CartPage({ cartInfo, slug }: CartPageProps) {
               ...item,
               subscription: subscribed ?? item.subscription,
             }
-          : item
-      )
+          : item,
+      ),
     );
   };
 
@@ -163,6 +163,7 @@ export default function CartPage({ cartInfo, slug }: CartPageProps) {
                 {cart?.map((item) => (
                   <tr key={item.id} className="py-4 px-4 border-b border-black">
                     <td className="flex py-4 px-4 min-w-96">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={item.product?.image_url}
                         alt={item?.product?.title}
@@ -184,7 +185,7 @@ export default function CartPage({ cartInfo, slug }: CartPageProps) {
                               onChange={(e) =>
                                 handleSubscriptionChange(
                                   item.id!,
-                                  e.target.checked
+                                  e.target.checked,
                                 )
                               }
                               checked={item.subscription}
@@ -202,7 +203,7 @@ export default function CartPage({ cartInfo, slug }: CartPageProps) {
                           onClick={() =>
                             handleQuantityChange(
                               item.id!,
-                              Math.max((item.quantity || 1) - 1, 0)
+                              Math.max((item.quantity || 1) - 1, 0),
                             )
                           }
                         >
@@ -215,7 +216,7 @@ export default function CartPage({ cartInfo, slug }: CartPageProps) {
                           onChange={(e) =>
                             handleQuantityChange(
                               item.id!,
-                              Number(e.target.value)
+                              Number(e.target.value),
                             )
                           }
                         />
@@ -225,7 +226,7 @@ export default function CartPage({ cartInfo, slug }: CartPageProps) {
                           onClick={() =>
                             handleQuantityChange(
                               item.id!,
-                              (item.quantity || 0) + 1
+                              (item.quantity || 0) + 1,
                             )
                           }
                         >

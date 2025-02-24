@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import CountryLanguagePicker from "@/components/CountryLanguagePicker";
@@ -13,13 +14,13 @@ import { useState } from "react";
 
 type NavbarProps = {
   company: Company;
-  params: Record<string, any>;
+  params: Record<string, string>;
 };
 
 type MenuItem = {
   href: string;
   label: string;
-  icon: any | null;
+  icon: string | null | React.ReactNode;
 };
 
 const Navbar = ({ company, params }: NavbarProps) => {
@@ -142,7 +143,7 @@ const Navbar = ({ company, params }: NavbarProps) => {
                   className="flex items-center py-4 pl-2 hover:bg-gray-50"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {item.icon && (
+                  {typeof item.icon === "string" && (
                     <Image
                       alt={item.icon}
                       height={20}

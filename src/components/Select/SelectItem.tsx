@@ -16,7 +16,7 @@ const SelectItem = forwardRef<
     <Select.Item
       className={classnames(
         "inline-flex justify-between hover:bg-gray-100 px-3 py-2 transition-colors",
-        className
+        className,
       )}
       {...props}
       ref={forwardedRef}

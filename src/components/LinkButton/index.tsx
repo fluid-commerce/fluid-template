@@ -23,7 +23,7 @@ const LinkButton = ({
     <Link
       href={href}
       className={twMerge(
-        cx(styleTypes[variant], styleTypes.all, className, "h-10")
+        cx(styleTypes[variant], styleTypes.all, className, "h-10"),
       )}
       {...rest}
     >

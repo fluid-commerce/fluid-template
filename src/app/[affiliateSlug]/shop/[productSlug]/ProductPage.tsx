@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
@@ -19,11 +20,11 @@ const Page = ({ product }: Props) => {
   const [imageHoverIndex, setImageHoverIndex] = useState<number>();
   const [imageSelectedIndex, setImageSelectedIndex] = useState(0);
   const [selectedVariant, setSelectedVariant] = useState<number | undefined>(
-    product.variants?.[0].id
+    product.variants?.[0].id,
   );
   const [quantity, setQuantity] = useState(1);
   const [subscribe, setSubscribe] = useState<"subscription" | "regular">(
-    "regular"
+    "regular",
   );
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const Page = ({ product }: Props) => {
                       "relative cursor-pointer flex w-full h-24 border items-center box-border",
                       imageSelectedIndex === index
                         ? "border-gray-500 bg-gray-100"
-                        : "border-gray-200"
+                        : "border-gray-200",
                     )}
                   >
                     <div className="margin-0 absolute">
@@ -115,7 +116,7 @@ const Page = ({ product }: Props) => {
                       variant.id === selectedVariant
                         ? "bg-gray-100 font-bold"
                         : "",
-                      "flex-shrink-0"
+                      "flex-shrink-0",
                     )}
                     onClick={() =>
                       variant.id !== selectedVariant &&

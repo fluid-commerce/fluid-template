@@ -17,10 +17,10 @@ const config: Config = {
         "2xl": "1440px", // Custom breakpoint for large screens
       },
       colors: {
-        baseGray: "#EEEEEE", 
-        lightGray: "#E5E5E5", 
-        darkText: "#1A1A1A", 
-        grayText: "#606060", 
+        baseGray: "#EEEEEE",
+        lightGray: "#E5E5E5",
+        darkText: "#1A1A1A",
+        grayText: "#606060",
       },
       fontFamily: {
         sans: ["InterVariable", "sans-serif"], // Matching Figma typography

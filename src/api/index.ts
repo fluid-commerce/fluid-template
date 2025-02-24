@@ -7,7 +7,7 @@ import getCart from "./getCart";
 
 const safeZodParse = (
   data: unknown,
-  schema: z.ZodSchema
+  schema: z.ZodSchema,
 ): z.infer<typeof schema> => {
   let parsedData;
   try {

@@ -12,10 +12,15 @@ const inter = Inter({ subsets: ["latin"] });
 
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fcs: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fluidChatSettings: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     fluidSettings: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Spreedly: any;
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
     showCartCount: Function;
   }
 }
@@ -28,9 +33,7 @@ type PageProps = Readonly<{
 export default async function RootLayout(props: PageProps) {
   const params = await props.params;
 
-  const {
-    children
-  } = props;
+  const { children } = props;
 
   const { affiliateSlug } = params;
   const company = await getCompany();
@@ -64,6 +67,7 @@ export default async function RootLayout(props: PageProps) {
 }
 
 export async function generateMetadata({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   params,
 }: PageProps): Promise<Metadata> {
   const company = await getCompany();

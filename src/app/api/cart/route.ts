@@ -9,9 +9,10 @@ export async function PUT(req: NextRequest) {
     const updatedCart = await updateCart(payload);
     return NextResponse.json(updatedCart);
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { message: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -25,7 +26,7 @@ export async function DELETE(req: NextRequest) {
     console.log("DELETE failed due to:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -38,7 +39,7 @@ export async function GET() {
     console.log("GET of cart failed due to:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

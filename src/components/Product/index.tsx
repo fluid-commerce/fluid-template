@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import type { Product } from "@/types/product";
 import Link from "next/link";
