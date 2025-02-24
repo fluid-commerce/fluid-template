@@ -9,7 +9,8 @@ type PageProps = {
   params: Record<string, any>;
 };
 
-const Page = async ({ params }: PageProps) => {
+const Page = async (props: PageProps) => {
+  const params = await props.params;
   let product: Product;
   try {
     product = await getProduct(params.productSlug);
@@ -20,11 +21,10 @@ const Page = async ({ params }: PageProps) => {
   return <ProductPage product={product} />;
 };
 
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const params = await props.params;
   const product = await getProduct(params.productSlug);
-  const headersList = headers();
+  const headersList = await headers();
 
   const images = [
     {
