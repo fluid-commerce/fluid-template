@@ -6,7 +6,7 @@ import { headers } from "next/headers";
 import Image from "next/image";
 
 type PageProps = {
-  params: Record<string, any>;
+  params: Record<string, string>;
 };
 
 const Page = async (props: PageProps) => {

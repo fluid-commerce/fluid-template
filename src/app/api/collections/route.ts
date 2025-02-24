@@ -9,6 +9,7 @@ async function GET() {
     }
     return NextResponse.json({ message: statusText }, { status: status });
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 },

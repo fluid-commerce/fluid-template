@@ -6,6 +6,7 @@ const BigImageTextOver = () => {
   return (
     <div className="relative overflow-hidden">
       {/* Background Image */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="https://placehold.co/1920x980/2F4F4F/black@3x.png"
         alt="Big Image"

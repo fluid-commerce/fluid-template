@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import facebook from "@/svgs/facebook.svg";
@@ -11,7 +12,7 @@ import Link from "next/link";
 
 type FooterProps = {
   company: Company;
-  params: Record<string, any>;
+  params: Record<string, string>;
 };
 
 const Footer = ({ company, params }: FooterProps) => {

@@ -2,7 +2,7 @@ import { getCart } from "@/api";
 import CartPage from "./CartPage";
 
 type PageProps = {
-  params: Record<string, any>;
+  params: Record<string, string>;
 };
 
 const Page = async (props: PageProps) => {

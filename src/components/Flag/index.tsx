@@ -7,6 +7,7 @@ type LazySvgProps = {
   className?: string;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Flag = ({ code, size, fill, className }: LazySvgProps) => (
   <div className="relative rounded-full overflow-hidden items-start justify-start">
     <Image

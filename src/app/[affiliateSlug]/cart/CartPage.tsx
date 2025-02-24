@@ -163,6 +163,7 @@ export default function CartPage({ cartInfo, slug }: CartPageProps) {
                 {cart?.map((item) => (
                   <tr key={item.id} className="py-4 px-4 border-b border-black">
                     <td className="flex py-4 px-4 min-w-96">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={item.product?.image_url}
                         alt={item?.product?.title}

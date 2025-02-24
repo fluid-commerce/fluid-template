@@ -9,6 +9,7 @@ export async function PUT(req: NextRequest) {
     const updatedCart = await updateCart(payload);
     return NextResponse.json(updatedCart);
   } catch (error) {
+    console.error(error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 },
