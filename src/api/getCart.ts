@@ -12,7 +12,7 @@ async function getCart(): Promise<Carts | []> {
 
     const { body } = await client(
       `carts/${cartToken}/cart_by_token?visitor_token=${visitorToken}`,
-      false
+      false,
     );
 
     return safeZodParse(body, cartSchema);

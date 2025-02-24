@@ -28,9 +28,7 @@ type PageProps = Readonly<{
 export default async function RootLayout(props: PageProps) {
   const params = await props.params;
 
-  const {
-    children
-  } = props;
+  const { children } = props;
 
   const { affiliateSlug } = params;
   const company = await getCompany();

@@ -15,7 +15,7 @@ const Page = ({ product }: Props) => {
   const [imageHoverIndex, setImageHoverIndex] = useState<number>();
   const [imageSelectedIndex, setImageSelectedIndex] = useState(1);
   const [selectedVariant, setSelectedVariant] = useState<number>(
-    product.variants?.[0]?.id ?? 0
+    product.variants?.[0]?.id ?? 0,
   );
   const [quantity, setQuantity] = useState(1);
 

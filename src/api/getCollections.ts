@@ -18,14 +18,14 @@ async function getCollections(): Promise<Collection[]> {
         collectionId: collection.id.toString(),
         language: cookiesList.get("language")?.value,
         country: cookiesList.get("country")?.value,
-      })
+      }),
   );
   const products = await Promise.all(productPromisesByCollectionIds);
   const collectionsWithMappedProducts = collections.map(
     (collection: Collection, index: number) => ({
       ...collection,
       products: products[index],
-    })
+    }),
   );
 
   return safeZodParse(collectionsWithMappedProducts, collectionArraySchema);

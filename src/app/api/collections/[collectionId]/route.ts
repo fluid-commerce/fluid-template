@@ -6,7 +6,7 @@ async function GET(req: NextRequest) {
   const collectionId = urlParams?.[urlParams.length - 1];
   try {
     const { body, status, statusText } = await client(
-      `collections/${collectionId}`
+      `collections/${collectionId}`,
     );
     if (status === 200) {
       return NextResponse.json(body, { status: 200 });
@@ -15,7 +15,7 @@ async function GET(req: NextRequest) {
   } catch (error) {
     return NextResponse.json(
       { message: "Internal Server Error" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

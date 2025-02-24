@@ -23,7 +23,7 @@ const CountryLanguagePicker = ({
   const router = useRouter();
   const [cookies, setCookie] = useCookies();
   const [country, setCountry] = useState(
-    cookies["country"] || defaultCountry || "US"
+    cookies["country"] || defaultCountry || "US",
   );
   const [lang, setLang] = useState(cookies["language"] || "en");
 

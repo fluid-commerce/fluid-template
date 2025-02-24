@@ -7,7 +7,7 @@ async function GET(req: NextRequest) {
   if (productId) {
     try {
       const { body, status, statusText } = await client(
-        `products/${productId}`
+        `products/${productId}`,
       );
       if (status !== 200) {
         return NextResponse.json({ message: statusText }, { status });
@@ -16,7 +16,7 @@ async function GET(req: NextRequest) {
     } catch (error) {
       return NextResponse.json(
         { message: "Internal Server Error" },
-        { status: 500 }
+        { status: 500 },
       );
     }
   } else {

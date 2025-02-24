@@ -14,7 +14,7 @@ const ProductCarousel = ({ products }: Props) => {
   const productLength = 363 + ((products.length - 1) * 32) / products.length;
   const scrollRef = useRef<HTMLDivElement>(null);
   const productsInPages = Math.floor(
-    (scrollRef?.current?.clientWidth || 1200) / productLength
+    (scrollRef?.current?.clientWidth || 1200) / productLength,
   );
   const numberOfDots = Math.ceil(products.length / productsInPages);
   const [currentPage, setCurrentPage] = useState(0);
@@ -24,7 +24,7 @@ const ProductCarousel = ({ products }: Props) => {
       <div
         onScroll={(e) =>
           setCurrentPage(
-            Math.ceil(e.currentTarget.scrollLeft / (396 * productsInPages))
+            Math.ceil(e.currentTarget.scrollLeft / (396 * productsInPages)),
           )
         }
         ref={scrollRef}

@@ -22,7 +22,7 @@ async function getProducts({
   if (collectionId) params.set("collection_id", collectionId);
 
   const { body } = await client(
-    `products/${params.toString() ? `?${params.toString()}` : ""}`
+    `products/${params.toString() ? `?${params.toString()}` : ""}`,
   );
   return safeZodParse(body.data.products, productsSchema);
 }

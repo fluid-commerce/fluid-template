@@ -24,7 +24,7 @@ const OneFeature = ({ reversed = false }: OneFeatureProps) => {
         <div
           className={cx(
             "flex flex-col md:flex-row items-center gap-8 lg:gap-12",
-            reversed && "md:flex-row-reverse"
+            reversed && "md:flex-row-reverse",
           )}
         >
           {/* Feature Image */}
@@ -41,7 +41,7 @@ const OneFeature = ({ reversed = false }: OneFeatureProps) => {
           <div
             className={cx(
               "w-full md:w-1/2 space-y-6",
-              reversed ? "md:pr-8" : "md:pl-8"
+              reversed ? "md:pr-8" : "md:pl-8",
             )}
           >
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-darkText">
