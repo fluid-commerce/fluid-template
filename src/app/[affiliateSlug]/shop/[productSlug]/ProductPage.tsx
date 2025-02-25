@@ -189,9 +189,11 @@ const Page = ({ product }: Props) => {
               id="add-to-cart-button"
               variant="primary"
               className="w-full"
-              onClick={() => {
-                console.log("Add To Cart");
-                console.log("fluidCart", window.fluidCart);
+              onClick={async () => {
+                const fluidCart = window.FluidSDK.getInstance().cart();
+                await fluidCart.add([
+                  { variant_id: selectedVariant, quantity },
+                ]);
               }}
             >
               Add To Cart
