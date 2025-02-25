@@ -12,7 +12,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@fluid-commerce/fairshare": "^1.0.13",
+    "@fluid-commerce/fairshare": "1.0.12",
     "@fontsource/inter": "^5.1.0",
     "@radix-ui/react-popover": "^1.1.6",
     "@radix-ui/react-select": "^2.1.6",

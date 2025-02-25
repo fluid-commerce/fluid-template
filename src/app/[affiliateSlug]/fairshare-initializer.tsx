@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
 import { FluidSDK } from "@fluid-commerce/fairshare";
+import { useEffect } from "react";
 
 interface FairshareInitializerProps {
   fluidShopId: string;
