@@ -1,5 +1,6 @@
 "use client";
 
+// @ts-expect-error -- FluidSDK build is not typed?
 import { FluidSDK } from "@fluid-commerce/fairshare";
 import { useEffect } from "react";
 
@@ -23,7 +24,7 @@ export default function FairshareInitializer({
         .then(() => {
           console.log("Fairshare initialized");
         })
-        .catch((error) => {
+        .catch((error: unknown) => {
           console.error("Fairshare initialization failed", error);
         });
     }
