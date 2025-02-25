@@ -6,6 +6,7 @@ import Star from "@/svgs/Star";
 import { Product } from "@/types/product";
 import cx from "classnames";
 import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 
 declare global {
   interface Window {
@@ -26,6 +27,7 @@ const Page = ({ product }: Props) => {
   const [subscribe, setSubscribe] = useState<"subscription" | "regular">(
     "regular",
   );
+  const [cookies, setCookie] = useCookies();
 
   useEffect(() => {
     if (window.addFluidCheckoutListeners) {
@@ -191,9 +193,20 @@ const Page = ({ product }: Props) => {
               className="w-full"
               onClick={async () => {
                 const fluidCart = window.FluidSDK.getInstance().cart();
-                await fluidCart.add([
-                  { variant_id: selectedVariant, quantity: 1 },
-                ]);
+                const fluidCartCookie = cookies.fluid_cart;
+
+                console.log("fluidCartCookie", fluidCartCookie);
+                if (fluidCartCookie) {
+                  console.log("adding to cart");
+                  await fluidCart.add([
+                    { variant_id: selectedVariant, quantity: 1 },
+                  ]);
+                } else {
+                  console.log("creating new cart");
+                  await fluidCart.new({
+                    items: [{ variant_id: selectedVariant, quantity }],
+                  });
+                }
               }}
             >
               Add To Cart
