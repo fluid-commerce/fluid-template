@@ -36,7 +36,9 @@ const Page = ({ product }: Props) => {
                     <img
                       src={
                         product.images[imageHoverIndex ?? imageSelectedIndex]
-                          ?.image_url || product.image_url
+                          ?.image_url ||
+                        product.image_url ||
+                        "product image"
                       }
                       alt={`image ${imageHoverIndex ?? imageSelectedIndex}`}
                       height={300}

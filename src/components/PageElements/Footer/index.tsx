@@ -100,7 +100,7 @@ const Footer = ({ company, params }: FooterProps) => {
               aria-label={`Visit our ${social.icon.iconName}`}
             >
               <Image
-                alt={social.icon.iconName}
+                alt={social.icon.iconName || "social icon"}
                 height={20}
                 width={20}
                 src={social.icon}

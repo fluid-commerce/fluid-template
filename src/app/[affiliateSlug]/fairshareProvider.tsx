@@ -22,6 +22,11 @@ export default function FairshareProvider({
     <>
       <DynamicFairshareInitializer
         fluidShopId={env.NEXT_PUBLIC_FLUID_SHOP_ID}
+        apiUrlHost={`https://${env.NEXT_PUBLIC_FLUID_SHOP_ID}`}
+        appId={"tacobell"}
+        enableFingerPrinting={false}
+        country={"US"}
+        chat={true}
       />
       {children}
     </>

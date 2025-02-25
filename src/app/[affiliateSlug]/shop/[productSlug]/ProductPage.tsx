@@ -73,7 +73,7 @@ const Page = ({ product }: Props) => {
                   >
                     <div className="margin-0 absolute">
                       <img
-                        src={image.image_url}
+                        src={image.image_url || "product image"}
                         alt={`image ${index}`}
                         height={96}
                         width={80}

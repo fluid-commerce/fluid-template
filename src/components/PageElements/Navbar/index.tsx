@@ -119,7 +119,7 @@ const Navbar = ({ company, params }: NavbarProps) => {
               {desktopIcons.map((item, index) => (
                 <Link key={index} href={item.href}>
                   <Image
-                    alt={item.icon}
+                    alt={item.icon || "icon"}
                     height={20}
                     width={20}
                     src={item.icon}
@@ -145,7 +145,7 @@ const Navbar = ({ company, params }: NavbarProps) => {
                 >
                   {typeof item.icon === "string" && (
                     <Image
-                      alt={item.icon}
+                      alt={item.icon || "icon"}
                       height={20}
                       width={20}
                       src={item.icon}
