@@ -1,4 +1,4 @@
-q# Fluid Headless Commerce Starter Pack
+# Fluid Headless Commerce Starter Pack
 
 ## Developer Documentation
 
