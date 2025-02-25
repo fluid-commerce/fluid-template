@@ -13,7 +13,7 @@ const Flag = ({ code, size, fill, className }: LazySvgProps) => (
     <Image
       className={cx("rounded-full h-6 w-6 object-cover", className)}
       src={`/countryFlag/${code.toLowerCase()}.svg`}
-      alt={code}
+      alt={code || "flag"}
       height={size}
       width={size}
       loading="lazy"

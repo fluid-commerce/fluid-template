@@ -166,7 +166,7 @@ export default function CartPage({ cartInfo, slug }: CartPageProps) {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={item.product?.image_url}
-                        alt={item?.product?.title}
+                        alt={item?.product?.title || "product image"}
                         height={100}
                         width={100}
                       />

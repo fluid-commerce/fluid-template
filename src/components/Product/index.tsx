@@ -24,7 +24,7 @@ const Product = ({ product }: { product: Product }) => {
                 "https://placehold.co/304x364/2F4F4F/black@3x.png"
               }
               className="object-contain h-[233px]"
-              alt={product?.title}
+              alt={product?.title || "Product Image"}
             />
           </div>
           <div className="overflow-hidden">
