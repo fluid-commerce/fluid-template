@@ -189,6 +189,10 @@ const Page = ({ product }: Props) => {
               id="add-to-cart-button"
               variant="primary"
               className="w-full"
+              onClick={() => {
+                console.log("Add To Cart");
+                console.log("fluidCart", window.fluidCart);
+              }}
             >
               Add To Cart
             </Button>
@@ -197,6 +201,11 @@ const Page = ({ product }: Props) => {
               data-variant={selectedVariant}
               variant="transparent-dark"
               className="w-full"
+              onClick={() => {
+                // window.fluidCart = FluidSDK.getInstance().cart();
+
+                console.log("Buy Now");
+              }}
             >
               Buy Now
             </Button>
