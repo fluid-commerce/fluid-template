@@ -192,7 +192,7 @@ const Page = ({ product }: Props) => {
               onClick={async () => {
                 const fluidCart = window.FluidSDK.getInstance().cart();
                 await fluidCart.add([
-                  { variant_id: selectedVariant, quantity },
+                  { variant_id: selectedVariant, quantity: 1 },
                 ]);
               }}
             >
