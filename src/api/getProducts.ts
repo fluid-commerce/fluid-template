@@ -24,7 +24,8 @@ async function getProducts({
   const { body } = await client(
     `products/${params.toString() ? `?${params.toString()}` : ""}`,
   );
-  return safeZodParse(body.data.products, productsSchema);
+
+  return safeZodParse(body?.products, productsSchema);
 }
 
 export default getProducts;
