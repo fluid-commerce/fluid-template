@@ -1,11 +1,11 @@
 import getCompany from "@/api/getCompany";
-import FairshareProvider from "@/app/[affiliateSlug]/fairshareProvider";
 import Footer from "@/components/PageElements/Footer";
 import Navbar from "@/components/PageElements/Navbar";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { headers } from "next/headers";
 import "../globals.css";
+import FairshareInitializer from "@/app/[affiliateSlug]/fairshare-initializer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -61,11 +61,10 @@ export default async function RootLayout(props: PageProps) {
         />
       </head>
       <body className={`${inter.className} h-screen`}>
-        <FairshareProvider>
-          <Navbar params={params} company={company} />
-          {children}
-          <Footer params={params} company={company} />
-        </FairshareProvider>
+        <FairshareInitializer />
+        <Navbar params={params} company={company} />
+        {children}
+        <Footer params={params} company={company} />
       </body>
     </html>
   );
